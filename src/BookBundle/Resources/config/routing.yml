@@ -1,0 +1,36 @@
+book_homepage:
+    path:     /
+    defaults: { _controller: BookBundle:Book:index }
+
+presentation:
+    path:     /presentation/{id}
+    defaults: { _controller: BookBundle:Book:presentation }
+
+
+ajout_panier:
+    path:     /ajouter/{id}
+    defaults: { _controller: BookBundle:Panier:ajout }
+
+panier:
+    path:     /panier
+    defaults: { _controller: BookBundle:Panier:panier }
+
+supprimer_panier:
+    path:     /supprimer/{id}
+    defaults: { _controller: BookBundle:Panier:supprimer}
+
+categorie:
+    path:     /categorie/{id}
+    defaults: { _controller: BookBundle:Categorie:categorie}
+
+livraison:
+    path:     /livraison
+    defaults: { _controller: BookBundle:Panier:livraison}
+
+validation:
+    path:     /validation
+    defaults: { _controller: BookBundle:Panier:validation}
+
+commande_paiement:
+    path:     /paiement/{id}
+    defaults: { _controller: BookBundle:Commande:paiement}

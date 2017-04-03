@@ -1,0 +1,24 @@
+<nav role="navigation" class="menu">
+
+    <ul>
+        <li><a href="#"> <i class="icon-user"></i><br>Mon compte
+                <ul>
+                    <li>
+                        <a href="{{ path('fos_user_profile_show') }}">Mes informations</a>
+                    </li>
+                    <li>
+                        <a href="#">Mes factures</a>
+                    </li>
+                    <li>
+                        <a href="#">Mes adresses</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}">Deconnexion</a>
+                    </li>
+                </ul>
+            </a></li>
+
+        <li><a href="{{ path('panier') }}"><i class="icon-shopping-cart"></i><br> Panier</a></li>
+    </ul>
+
+</nav>

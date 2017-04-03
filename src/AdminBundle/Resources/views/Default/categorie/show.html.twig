@@ -1,0 +1,26 @@
+{% extends '::default/Admin.html.twig' %}
+
+{% block body %}
+    <h1>Categorie</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ categorie.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+            <a class="btn btn-primary" href="{{ path('adminCategorie_index') }}">Retour à la liste</a>
+            <a  class="btn btn-primary" href="{{ path('adminCategorie_edit', { 'id': categorie.id }) }}">Edit</a>
+
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends '::default/Admin.html.twig' %}
+
+{% block body %}
+    <h1>Livre</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ livre.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ livre.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ livre.description }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ livre.prix }}</td>
+            </tr>
+            <tr>
+                <th>Disponible</th>
+                <td>{{ livre.disponible }}</td>
+            </tr>
+        </tbody>
+    </table>
+            <a class="btn btn-primary" href="{{ path('adminLivre_index') }}">Retour à la liste</a>
+
+            <a class="btn btn-primary" href="{{ path('adminLivre_edit', { 'id': livre.id }) }}">Editer</a>
+
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger"  type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+
+{% endblock %}

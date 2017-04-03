@@ -1,0 +1,56 @@
+{% extends"::default/index.html.twig" %}
+
+    {%block body %}
+
+        <div class="container">
+
+         <div class="row">
+            <h2>Résumé de votre commande</h2>
+             <table class=" table table-bordered">
+                 <thead>
+                 <tr>
+                     <th>Reference</th>
+                     <th>Quantité</th>
+                     <th>Prix Unitaire</th>
+                     <th>Prix TTC</th>
+                 </tr>
+
+
+                 </thead>
+                 <tbody>
+                 {% for produit in commande.commande.produit %}
+
+
+                     <tr>
+                         <td>{{ produit.reference }}</td>
+                         <td>{{ produit.quantite }}</td>
+                         <td>{{ produit.prixHT }}</td>
+                         <td>{{ produit.prixTTC}}</td>
+                     </tr>
+
+                 {% endfor %}
+
+                 </tbody>
+
+             </table>
+
+            <dl class="dl-horizontal pull-right">
+
+                <dt>Total HT</dt>
+                <dd>25€</dd>
+                <dt>TVA</dt>
+                <dd>15%</dd>
+                <dt>Total HT</dt>
+                <dd>25€</dd>
+            </dl>
+
+        <a class="btn btn-primary" href="{{ path('commande_paiement', {'id' : commande.id}) }}">Valider la commande</a>
+
+         </div>
+        </div>
+
+{%  endblock %}
+
+
+
+

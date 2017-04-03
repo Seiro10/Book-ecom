@@ -1,0 +1,29 @@
+adminLivre_index:
+    path:     /
+    defaults: { _controller: "AdminBundle:adminLivre:index" }
+    methods:  GET
+
+adminLivre_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminBundle:adminLivre:show" }
+    methods:  GET
+
+adminLivre_update:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminBundle:adminLivre:edit" }
+    methods:  [GET, POST]
+
+adminLivre_new:
+    path:     /new
+    defaults: { _controller: "AdminBundle:adminLivre:new" }
+    methods:  [GET, POST]
+
+adminLivre_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminBundle:adminLivre:edit" }
+    methods:  [GET, POST]
+
+adminLivre_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminBundle:adminLivre:delete" }
+    methods:  DELETE

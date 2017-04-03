@@ -1,0 +1,15 @@
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+utilisateur:
+    resource: "@UtilisateurBundle/Resources/config/routing.yml"
+    prefix:   /
+
+book:
+    resource: "@BookBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

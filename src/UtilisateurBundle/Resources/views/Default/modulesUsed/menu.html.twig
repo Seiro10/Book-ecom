@@ -1,0 +1,13 @@
+<div class="well">
+
+
+        <ul class="nav nav-list">
+            <li class="nav-header">Catégories de livres</li>
+            {% for categorie in categories %}
+            <li>
+                <a href="{{ path('categorie', {'id' :categorie.id}) }}">{{ categorie.nom }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>

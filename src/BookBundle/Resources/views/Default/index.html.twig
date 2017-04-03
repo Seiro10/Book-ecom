@@ -1,0 +1,85 @@
+{%  extends'::default/index.html.twig' %}
+
+{% block body %}
+
+    {% for flashmessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-info">
+        {{ flashmessage }}
+    </div>
+    {% endfor %}
+
+    <div class="container" style="padding-left: 30px;">
+        <div class="row">
+            <div id="myCarousel" class="carousel slide" data-interval="3000">
+                <!-- Dot Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <!-- Items -->
+
+
+                <div class="carousel-inner">
+                    <div class="active item"><img src="http://editions-balland.com/web_files/slidebarberousse_1.jpg"  class="img-responsive"></div>
+                    <div class="item"><img src="http://editions-balland.com/web_files/slidebarberousse_1.jpg" class=" img-responsive"></div>
+                    <div class="item"><img src="http://editions-balland.com/web_files/slidebarberousse_1.jpg" class="img-responsive"></div>
+                </div>
+                <!-- Navigation -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="span3">
+
+                {%  render(controller('BookBundle:Categorie:index')) %}
+
+            </div>
+
+            <div class="span9">
+
+                <ul class="thumbnails">
+                    {% for livre in livres %}
+                    <li class="span3">
+                        <div class="thumbnail">
+                            <img src="{{ asset(livre.image.AssetPath) }}" alt="{{ livre.nom }}">
+                            <div class="caption">
+                                <h4>{{ livre.nom }}</h4>
+                                <p>{{ livre.prix }} €</p>
+                                <a class="btn btn-primary" href="{{ path('presentation', { 'id' : livre.id}) }}">Plus d'infos</a>
+                                <a class="btn btn-success" href="{{  path('ajout_panier', {'id' : livre.id}) }}">Ajouter au panier</a>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                    </ul>
+
+                <div class="pagination">
+                    <ul>
+                        <li class="disabled"><span>Précédent</span></li>
+                        <li class="disabled"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">Suivant</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{%  endblock %}
+
+
+

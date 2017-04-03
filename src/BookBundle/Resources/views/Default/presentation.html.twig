@@ -1,0 +1,56 @@
+{%  extends'::default/index.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+
+                {%  render(controller('BookBundle:Categorie:index')) %}
+            </div>
+            <div class="span9">
+                <div class="row">
+                    <div class="span5">
+                        <img src="{{ asset(livre.image.AssetPath) }}" alt="{{ asset(livre.image.name) }}" width="300" height="150">
+                    </div>
+
+                    <div class="span4">
+                        <h3>{{ livre.nom }}</h3>
+                        <h5>{{ livre.categorie.nom }}</h5>
+                        <p>{{ livre.description }}</p>
+                        <h4>{{ livre.prix }} €</h4>
+                        <form action="{{ path('ajout_panier',  {'id' : livre.id}) }}" method="get">
+
+
+                            <select name="qte" class="span1">
+                                {% for i in 0..10 %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {%  endfor %}
+                            </select>
+
+                            <div>
+                                <button class="btn btn-success" >Ajouter au panier</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="container">
+        <h4>Les lecteurs ont aussi aimés :</h4>
+            <div class="row">
+                {%  for livrelike in livrelikes %}
+            <div class="span2">
+                <img src="{{ asset(livrelike.image.AssetPath) }}" alt="" width="150" height="75">
+                <h6>{{ livrelike.nom }}</h6>
+                <h6>{{ livrelike.prix }} €</h6>
+                <a class="btn btn-primary" href="{{ path('presentation', {'id' : livrelike.id}) }}" >Plus d'infos</a>
+            </div>
+                {% endfor %}
+        </div>
+        </div>
+
+{%  endblock %}

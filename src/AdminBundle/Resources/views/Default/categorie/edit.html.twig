@@ -1,0 +1,17 @@
+{% extends '::default/Admin.html.twig' %}
+
+{% block body %}
+    <h1>Categorie edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input class="btn btn-primary" type="submit" value="Editer" />
+    {{ form_end(edit_form) }}
+
+            <a  class="btn btn-primary" href="{{ path('adminCategorie_index') }}">Retour sur la liste</a>
+
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{%  extends'::default/index.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+
+
+            <div class="span12">
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                {{ flashMessage }}
+
+                </div>
+                {% endfor %}
+                <h2>Votre panier</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Références</th>
+                            <th>Quantité</th>
+                            <th>Prix unitaire</th>
+                            <th>Total HT</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for livre in livres %}
+
+                            <tr>
+                                <form action="{{ path('ajout_panier' , {'id' : livre.id}) }}" method="get">
+                                    <td>{{ livre.nom }}</td>
+                                    <td>
+                                        <select name="qte" class="span1" onChange="this.form.submit()">
+                                            {%  for i in 0..10 %}
+                                                <option value="{{ i }}"{% if i == panier[livre.id] %} selected="selected"{% endif %}>{{ i }}</option>
+                                            {%  endfor %}
+                                        </select>
+                                        <a href="{{ path('supprimer_panier' , {'id' : livre.id}) }}"><i class="icon-trash"></i></a>
+                                    </td>
+                                    <td>{{ livre.prix }} €</td>
+                                    <td>{{ livre.prix * panier[livre.id] }} €</td>
+                                </form>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                <dl class="dl-horizontal pull-right">
+                    <dt>Total HT :</dt>
+                    <dd>?€</dd>
+
+                    <dt>TVA :</dt>
+                    <dd>?€</dd>
+
+                    <dt>Total:</dt>
+                    <dd>?€</dd>
+                </dl>
+                <div class="clearfix"></div>
+                <a href="{{ path('livraison') }}" class="btn btn-success pull-right">Valider mon panier</a>
+                <a href="{{ path('book_homepage') }}" class="btn btn-primary">Continuer mes achats</a>
+            </div>
+
+        </div>
+    </div>
+{%  endblock %}
+
+
+
+

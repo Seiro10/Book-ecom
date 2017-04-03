@@ -1,0 +1,11 @@
+admin_homepage:
+    path:     /admin
+    defaults: { _controller: AdminBundle:Default:index }
+
+book_adminLivre:
+    resource: "@AdminBundle/Resources/config/adminLivre.yml"
+    prefix:   /admin/livre/
+
+book_adminCategorie:
+    resource: "@AdminBundle/Resources/config/adminCategorie.yml"
+    prefix:   /admin/categorie/

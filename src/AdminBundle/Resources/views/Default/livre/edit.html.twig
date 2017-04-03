@@ -1,0 +1,56 @@
+{% extends '::default/Admin.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="span 3">
+
+                <div class="well">
+
+
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Administration</li>
+                        <li><a href="{{ path('adminCategorie_index') }}">Gerer les categories</a></li>
+                        <li><a href="{{ path('adminCategorie_index') }}">Gerer les categories</a></li>
+                    </ul>
+
+                 </div>
+
+            </div>
+
+
+            <div class="span9">
+
+                <h1>Gérer les livres</h1>
+
+                <form action="{{ path('adminLivre_edit', {'id' : livre.id}  ) }}" method="post" {{ form_enctype(edit_form) }}>
+                    {{ form_widget(edit_form) }}
+
+                    <input class="btn btn-success" type="submit" value="Modifier" />
+                </form>
+                <a class="btn btn-primary" href="{{ path('adminLivre_index') }}">Retour à la liste</a>
+
+                {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+{% endblock %}
