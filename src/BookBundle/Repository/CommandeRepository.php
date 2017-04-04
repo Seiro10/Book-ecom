@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommandeRepository extends EntityRepository
 {
+
+    public function findByUser($id){
+
+        $qb = $this->createQueryBuilder('u');
+        $qb->select('u')
+            ->where('u.utilisateur = :id' )
+            ->orderBy('u.date')
+            ->setParameter('id' ,$id);
+
+        return $qb->getQuery()->getResult();
+
+    }
 }

@@ -1,0 +1,48 @@
+{%  extends('::default/index.html.twig') %}
+
+{% block body %}
+
+
+    <div class="container">
+
+        <div class="row">
+            <h2>Details de votre facture</h2>
+            <table class="table table-bordered">
+
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Quantité</th>
+                        <th>Prix HT</th>
+                        <th>PrixTTC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produit in facture.commande.produit %}
+                    <tr>
+                        <td>{{ produit.reference }}</td>
+                        <td>{{ produit.quantite }}</td>
+                        <td>{{ produit.prixHT }}€</td>
+                        <td>{{ produit.prixTTC }}€</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+
+            </table>
+
+            <dl class="dl-horizontal pull-right">
+
+                <dt>Total HT</dt>
+                <dd>{{ facture.commande.prixHT }}€</dd>
+                <dt>TVA</dt>
+                <dd>20%</dd>
+                <dt>Total HT</dt>
+                <dd>{{ facture.commande.prixTTC }}€</dd>
+            </dl>
+        </div>
+
+
+    </div>
+
+{%  endblock %}

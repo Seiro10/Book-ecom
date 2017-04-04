@@ -1,1 +1,44 @@
-Hello World!
+{%  extends('::default/index.html.twig') %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row">
+            <h2>Vos factures</h2>
+            <table class=" table table-bordered">
+                <thead>
+                <tr>
+                    <th>Numéro de facture</th>
+                    <th>Date</th>
+                    <th>PrixHT</th>
+                    <th>PrixTTC</th>
+                    <th>Commande</th>
+                </tr>
+
+                </thead>
+                <tbody>
+
+                {% for facture in factures %}
+                    <tr>
+
+                        <td>{{ facture.id }}</td>
+                        <td>{{ facture.date.date|date }}</td>
+                        <td>{{ facture.commande.prixHT }}€</td>
+                        <td>{{ facture.commande.prixTTC }}€</td>
+                        <td><a href="{{ path('utilisateur_facture_details' , {'id' :facture.id}) }}">Voir le détail</a></td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+
+{%  endblock %}
